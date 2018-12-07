@@ -74,41 +74,39 @@
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-12 text-center"> 
-      <h1>Book Feedback Form</h1>
+      <h1>Show Book Feedback</h1><br />
+      <h3>${status}</h3>
+      <h3>${remove_status}</h3>
       <br />
-   <form class="form-inline" action="feedback" method="post">
-    <div class="form-group">
-      <label class="" for="book_id">Book Id:</label>
-      <input type="text" class="form-control" id="book_id" placeholder="Enter Book Id"  name="book_id">
-    </div><br /><br />
-    <div class="form-group">
-      <label class="" for="pwd">Book Title:</label>
-      <input type="text" class="form-control" id="book_title" placeholder="Enter Book Title" name="book_title">
-    </div><br /><br />
-    <div class="form-group">
-      <label class="" for="book_author">Book Author:</label>
-      <input type="text" class="form-control" id="book_author" placeholder="Enter Book Author" name="book_author">
-    </div><br /><br />
-    <div class="form-group">
-      <label class="" for="isbn_no">Book Author:</label>
-      <input type="text" class="form-control" id="isbn_no" placeholder="Enter Book Isbn no" name="isbn_no">
-    </div><br /><br />
-    <div class="form-group">
-      <label class="" for="book_file">Book Author:</label>
-      <input type="file" class="form-control" id="book_file" placeholder="" name="book_file">
-    </div><br /><br />
-    <div class="form-group">
-      <label class="" for="cell_no">Book Author:</label>
-      <input type="text" class="form-control" id="cell_no" placeholder="Enter Cell no" name="cell_no">
-    </div><br /><br />
-    <div class="form-group">
-      <label class="" for="row_no">Book Author:</label>
-      <input type="text" class="form-control" id="row_no" placeholder="Enter Row no" name="row_no">
-    </div><br /><br />
-    <button type="submit" class="btn btn-default" >Submit</button>
-  </form>
-      
-    </div>
+    <table class="table">
+  <thead>
+    <tr>
+<th>Book Id</th>
+<th>Book Title</th>
+<th>Book Author</th>
+<th>ISBN no</th>
+<th>Book Image</th>
+<th colspan="6">Action</th>
+</tr>
+  </thead>
+  <tbody>
+      <c:forEach var="book_view" items="${book_view}">
+<tr>
+<td>${book_view.book_id}</td>
+<td>${book_view.book_title}</td>
+<td>${book_view.book_author}</td>
+<td>${book_view.isbn_no}</td>
+<td>
+<%-- <img src="${book_view.book_file}" width="80px" height="80px" />  --%>
+${book_view.book_file}
+</td>
+<td><a href="edit?edit=${book_view.book_id}">Edit</a></td>
+<td><a href="remove?remove=${book_view.book_id}">Delete</a></td>
+</tr>
+</c:forEach>
+  </tbody>
+</table>
+  </div>
   </div>
 </div>
 <br /><br />

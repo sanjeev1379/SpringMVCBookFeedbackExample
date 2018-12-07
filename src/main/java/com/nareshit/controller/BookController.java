@@ -38,6 +38,13 @@ public String showFeedbackForm(){
 			return "/WEB-INF/pages/home.jsp";
 	}
 	
+	@RequestMapping(value="show",method=RequestMethod.GET)
+	public ModelAndView showBook(){
+		List<Book> book_view=bookService.showfeedbackBook();
+		System.out.println(book_view);
+		return new ModelAndView("/WEB-INF/pages/show.jsp","book_view",book_view);
+	}
+	
 	@RequestMapping(value="remove",method=RequestMethod.GET)
 	public ModelAndView removeFeedback(@RequestParam("remove") int book_id){
 		String remove_status=bookService.removeFeedback(book_id);
